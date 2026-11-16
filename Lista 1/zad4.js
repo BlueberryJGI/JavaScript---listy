@@ -1,3 +1,4 @@
+const assert = require('assert').strict;
 let count = 0;
 
 function cardCounter(card){
@@ -5,6 +6,8 @@ function cardCounter(card){
         ++count;
     } else if (card === 10 || card === "J" || card === "Q" || card === "K" || card === "A"){
         --count;
+    } else {
+        return "Not valid input"
     }
 
     if (count > 0){
@@ -14,3 +17,8 @@ function cardCounter(card){
 }
 
 // testy funkcji
+assert.strictEqual(cardCounter(1), "Not valid input");
+assert.strictEqual(cardCounter(undefined), "Not valid input");
+assert.strictEqual(cardCounter(2), "1 Bet");
+assert.strictEqual(cardCounter("J"), "0 Hold");
+console.log("all tests passed");
